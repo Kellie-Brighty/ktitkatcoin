@@ -23,7 +23,7 @@ body {
     position: relative;
 }
 
-/* Photorealistic Sky Background - Exactly Like the Image */
+/* Photorealistic Sky Background with Banner */
 .cloud-container {
     position: fixed;
     top: 0;
@@ -33,13 +33,19 @@ body {
     pointer-events: none;
     z-index: 0;
     overflow: hidden;
-    background: linear-gradient(to bottom, 
-        #ADD8E6 0%,
-        #B0D9F0 30%,
-        #C8E6F5 50%,
-        #E0F4FF 70%,
-        #F0F8FF 100%
-    );
+    background: 
+        linear-gradient(to bottom, 
+            rgba(173, 216, 230, 0.6) 0%,
+            rgba(176, 217, 240, 0.5) 30%,
+            rgba(200, 230, 245, 0.4) 50%,
+            rgba(224, 244, 255, 0.3) 70%,
+            rgba(240, 248, 255, 0.2) 100%
+        ),
+        url('banner.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: overlay;
 }
 
 /* Realistic Cloud Shapes - Photorealistic Style */
