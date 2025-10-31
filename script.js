@@ -39,83 +39,98 @@ contractAddress.addEventListener('click', () => {
 window.addEventListener('load', () => {
     document.body.style.opacity = '0';
     setTimeout(() => {
-        document.body.style.transition = 'opacity 0.5s ease';
+        document.body.style.transition = 'opacity 0.8s ease';
         document.body.style.opacity = '1';
     }, 100);
 });
 
-// Add parallax effect to hero image on scroll
+// Enhanced Angelic Cat Flying Animation
+const angelicCatWrapper = document.querySelector('.angelic-cat-wrapper');
+let flyX = 0;
+let flyY = 0;
+let targetX = 0;
+let targetY = 0;
+
+// Random flying path
+function updateFlyingPath() {
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    
+    // Random target position within reasonable bounds
+    targetX = (Math.random() - 0.5) * (viewportWidth * 0.4);
+    targetY = (Math.random() - 0.5) * (viewportHeight * 0.3) - 100;
+    
+    if (angelicCatWrapper) {
+        angelicCatWrapper.style.transition = 'transform 8s ease-in-out';
+        angelicCatWrapper.style.transform = `translateX(${targetX}px) translateY(${targetY}px)`;
+    }
+}
+
+// Update flying path periodically
+setInterval(updateFlyingPath, 8000);
+
+// Initial random position
+updateFlyingPath();
+
+// Subtle parallax for heavenly rays only (clouds stay static)
 let lastScroll = 0;
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
-    const heroImage = document.querySelector('.kitkat-image');
     
-    if (heroImage) {
-        const speed = scrolled * 0.1;
-        heroImage.style.transform = `translateY(${-20 + speed * 0.3}px)`;
+    // Move heavenly rays slightly for depth
+    const rays = document.querySelector('.heavenly-rays');
+    if (rays) {
+        rays.style.transform = `translateX(-50%) translateY(${scrolled * 0.15}px)`;
     }
     
     lastScroll = scrolled;
 });
 
-// Add hover effects for social links
+
+// Enhanced hover effects for social links
 const socialLinks = document.querySelectorAll('.social-link');
 socialLinks.forEach(link => {
     link.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-5px) scale(1.05) rotate(2deg)';
+        this.style.transform = 'translateY(-10px) scale(1.08)';
     });
     
     link.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0) scale(1) rotate(0deg)';
+        this.style.transform = 'translateY(0) scale(1)';
     });
 });
 
-// Add sparkle effect on page load
-function createSparkle() {
-    const sparkle = document.createElement('div');
-    sparkle.innerHTML = '✨';
-    sparkle.style.position = 'fixed';
-    sparkle.style.fontSize = '20px';
-    sparkle.style.pointerEvents = 'none';
-    sparkle.style.left = Math.random() * window.innerWidth + 'px';
-    sparkle.style.top = Math.random() * window.innerHeight + 'px';
-    sparkle.style.animation = 'sparkle 2s ease-out forwards';
-    document.body.appendChild(sparkle);
-    
-    setTimeout(() => {
-        sparkle.remove();
-    }, 2000);
+// Mouse interaction with angelic cat
+if (angelicCatWrapper) {
+    document.addEventListener('mousemove', (e) => {
+        const mouseX = e.clientX / window.innerWidth - 0.5;
+        const mouseY = e.clientY / window.innerHeight - 0.5;
+        
+        // Subtle following effect
+        const moveX = mouseX * 20;
+        const moveY = mouseY * 20;
+        
+        angelicCatWrapper.style.transition = 'transform 0.3s ease-out';
+        const currentTransform = angelicCatWrapper.style.transform || '';
+        const baseTransform = currentTransform.match(/translateX\(([^)]+)\)\s+translateY\(([^)]+)\)/);
+        
+        if (baseTransform) {
+            const baseX = parseFloat(baseTransform[1]) || 0;
+            const baseY = parseFloat(baseTransform[2]) || 0;
+            angelicCatWrapper.style.transform = 
+                `translateX(${baseX + moveX}px) translateY(${baseY + moveY}px)`;
+        }
+    });
 }
 
-// Add sparkle animation to CSS dynamically
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes sparkle {
-        0% {
-            opacity: 0;
-            transform: scale(0) translateY(0);
-        }
-        50% {
-            opacity: 1;
-            transform: scale(1.5) translateY(-50px);
-        }
-        100% {
-            opacity: 0;
-            transform: scale(0.5) translateY(-100px);
-        }
-    }
-`;
-document.head.appendChild(style);
 
-// Create sparkles periodically
-setInterval(createSparkle, 1000);
 
-// Add interactive hover effect to contract address input
-contractAddress.addEventListener('mouseenter', () => {
-    contractAddress.style.transform = 'scale(1.02)';
+// Smooth parallax for sections
+const sections = document.querySelectorAll('section');
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    
+    sections.forEach((section, index) => {
+        const speed = 0.5 + (index * 0.1);
+        section.style.transform = `translateY(${scrolled * speed * 0.05}px)`;
+    });
 });
-
-contractAddress.addEventListener('mouseleave', () => {
-    contractAddress.style.transform = 'scale(1)';
-});
-

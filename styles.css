@@ -5,69 +5,661 @@
 }
 
 :root {
-    --primary-pink: #FF6B9D;
-    --primary-purple: #000000;
-    --primary-yellow: #FFD93D;
-    --primary-orange: #FF8E53;
-    --bright-blue: #4FC3F7;
-    --bright-green: #66BB6A;
-    --bg-gradient: linear-gradient(135deg, #FF6B9D 0%, #000000 50%, #FFD93D 100%);
+    --sky-blue: #87CEEB;
+    --light-blue: #B0E0E6;
+    --cloud-white: #FFFFFF;
+    --gold: #FFD700;
+    --gold-light: #FFF8DC;
     --text-dark: #2D2D2D;
     --text-light: #FFFFFF;
 }
 
 body {
     font-family: 'Bubblegum Sans', cursive;
-    background: #ffffff;
-    background-image: 
-        radial-gradient(circle at 25px 25px, rgba(255, 107, 157, 0.08) 2px, transparent 0),
-        radial-gradient(circle at 75px 75px, rgba(0, 0, 0, 0.08) 2px, transparent 0),
-        radial-gradient(circle at 125px 125px, rgba(255, 217, 61, 0.08) 2px, transparent 0),
-        linear-gradient(45deg, transparent 30%, rgba(255, 107, 157, 0.03) 30%, rgba(255, 107, 157, 0.03) 70%, transparent 70%),
-        linear-gradient(-45deg, transparent 30%, rgba(0, 0, 0, 0.03) 30%, rgba(0, 0, 0, 0.03) 70%, transparent 70%);
-    background-size: 200px 200px, 200px 200px, 200px 200px, 60px 60px, 60px 60px;
-    background-position: 0 0, 100px 100px, 50px 50px, 0 0, 30px 30px;
+    background: transparent;
     min-height: 100vh;
     overflow-x: hidden;
     color: var(--text-dark);
     position: relative;
 }
 
-body::before {
-    content: '';
+/* Photorealistic Sky Background - Exactly Like the Image */
+.cloud-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: 
-        repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 2px,
-            rgba(0, 0, 0, 0.03) 2px,
-            rgba(0, 0, 0, 0.03) 4px
-        ),
-        repeating-linear-gradient(
-            90deg,
-            transparent,
-            transparent 2px,
-            rgba(255, 107, 157, 0.03) 2px,
-            rgba(255, 107, 157, 0.03) 4px
-        );
     pointer-events: none;
     z-index: 0;
+    overflow: hidden;
+    background: linear-gradient(to bottom, 
+        #ADD8E6 0%,
+        #B0D9F0 30%,
+        #C8E6F5 50%,
+        #E0F4FF 70%,
+        #F0F8FF 100%
+    );
 }
+
+/* Realistic Cloud Shapes - Photorealistic Style */
+.cloud {
+    position: absolute;
+    will-change: transform;
+    filter: blur(2px);
+}
+
+/* Create photorealistic cloud formations using multiple overlapping soft shapes */
+.cloud::before,
+.cloud::after {
+    content: '';
+    position: absolute;
+    background: #FFFFFF;
+    border-radius: 50%;
+    filter: blur(1px);
+}
+
+/* Cloud Formation - Positioned in lower half like the image */
+/* Clouds fill the horizon line with soft, billowy formations */
+.cloud1 {
+    width: 600px;
+    height: 200px;
+    top: 60%;
+    left: 0%;
+    opacity: 0.95;
+}
+
+.cloud1::before {
+    width: 200px;
+    height: 200px;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 
+        220px 0 0 -15px rgba(255, 255, 255, 0.95),
+        440px 0 0 -25px rgba(255, 255, 255, 0.92),
+        110px 100px 0 -35px rgba(255, 255, 255, 0.94),
+        330px 90px 0 -28px rgba(255, 255, 255, 0.93),
+        550px 110px 0 -32px rgba(255, 255, 255, 0.91);
+}
+
+.cloud1::after {
+    width: 220px;
+    height: 220px;
+    top: -25px;
+    left: 120px;
+    background: rgba(255, 255, 255, 0.97);
+    box-shadow: 
+        280px 0 0 -12px rgba(255, 255, 255, 0.94),
+        420px 20px 0 -18px rgba(255, 255, 255, 0.93),
+        70px 110px 0 -28px rgba(255, 255, 255, 0.95),
+        350px 110px 0 -22px rgba(255, 255, 255, 0.92);
+}
+
+.cloud2 {
+    width: 800px;
+    height: 250px;
+    top: 65%;
+    right: 5%;
+    opacity: 0.92;
+}
+
+.cloud2::before {
+    width: 220px;
+    height: 220px;
+    top: 15px;
+    left: 0;
+    background: #FFFFFF;
+    box-shadow: 
+        280px 0 0 -15px #FFFFFF,
+        560px 0 0 -25px #FFFFFF,
+        140px 90px 0 -35px #FFFFFF,
+        420px 85px 0 -30px #FFFFFF,
+        630px 95px 0 -20px #FFFFFF,
+        70px -30px 0 -20px #FFFFFF,
+        350px -25px 0 -25px #FFFFFF;
+}
+
+.cloud2::after {
+    width: 200px;
+    height: 200px;
+    top: -25px;
+    left: 180px;
+    background: #FFFFFF;
+    box-shadow: 
+        320px 0 0 -15px #FFFFFF,
+        500px 40px 0 -20px #FFFFFF,
+        100px 110px 0 -40px #FFFFFF,
+        400px 110px 0 -30px #FFFFFF;
+}
+
+.cloud3 {
+    width: 700px;
+    height: 220px;
+    top: 58%;
+    left: 20%;
+    opacity: 0.93;
+}
+
+.cloud3::before {
+    width: 190px;
+    height: 190px;
+    top: 20px;
+    left: 0;
+    background: #FFFFFF;
+    box-shadow: 
+        260px 0 0 -20px #FFFFFF,
+        520px 0 0 -25px #FFFFFF,
+        130px 85px 0 -35px #FFFFFF,
+        390px 80px 0 -30px #FFFFFF,
+        580px 90px 0 -25px #FFFFFF;
+}
+
+.cloud3::after {
+    width: 210px;
+    height: 210px;
+    top: -15px;
+    left: 160px;
+    background: #FFFFFF;
+    box-shadow: 
+        310px 0 0 -10px #FFFFFF,
+        470px 35px 0 -15px #FFFFFF,
+        90px 105px 0 -30px #FFFFFF,
+        370px 105px 0 -25px #FFFFFF;
+}
+
+.cloud4 {
+    width: 750px;
+    height: 230px;
+    top: 70%;
+    left: 10%;
+    opacity: 0.94;
+}
+
+.cloud4::before {
+    width: 195px;
+    height: 195px;
+    top: 18px;
+    left: 0;
+    background: #FFFFFF;
+    box-shadow: 
+        270px 0 0 -18px #FFFFFF,
+        540px 0 0 -28px #FFFFFF,
+        135px 88px 0 -38px #FFFFFF,
+        405px 82px 0 -32px #FFFFFF,
+        600px 92px 0 -22px #FFFFFF;
+}
+
+.cloud4::after {
+    width: 205px;
+    height: 205px;
+    top: -18px;
+    left: 170px;
+    background: #FFFFFF;
+    box-shadow: 
+        320px 0 0 -12px #FFFFFF,
+        485px 32px 0 -18px #FFFFFF,
+        95px 108px 0 -32px #FFFFFF,
+        380px 108px 0 -28px #FFFFFF;
+}
+
+.cloud5 {
+    width: 650px;
+    height: 210px;
+    top: 62%;
+    right: 15%;
+    opacity: 0.91;
+}
+
+.cloud5::before {
+    width: 185px;
+    height: 185px;
+    top: 25px;
+    left: 0;
+    background: #FFFFFF;
+    box-shadow: 
+        250px 0 0 -22px #FFFFFF,
+        500px 0 0 -26px #FFFFFF,
+        125px 92px 0 -36px #FFFFFF,
+        375px 87px 0 -31px #FFFFFF,
+        570px 97px 0 -24px #FFFFFF;
+}
+
+.cloud5::after {
+    width: 215px;
+    height: 215px;
+    top: -12px;
+    left: 145px;
+    background: #FFFFFF;
+    box-shadow: 
+        305px 0 0 -11px #FFFFFF,
+        460px 38px 0 -17px #FFFFFF,
+        85px 112px 0 -33px #FFFFFF,
+        365px 112px 0 -29px #FFFFFF;
+}
+
+.cloud6 {
+    width: 720px;
+    height: 225px;
+    top: 68%;
+    left: 25%;
+    opacity: 0.93;
+}
+
+.cloud6::before {
+    width: 192px;
+    height: 192px;
+    top: 22px;
+    left: 0;
+    background: #FFFFFF;
+    box-shadow: 
+        264px 0 0 -19px #FFFFFF,
+        528px 0 0 -27px #FFFFFF,
+        132px 89px 0 -37px #FFFFFF,
+        396px 84px 0 -31px #FFFFFF,
+        590px 94px 0 -23px #FFFFFF;
+}
+
+.cloud6::after {
+    width: 208px;
+    height: 208px;
+    top: -16px;
+    left: 165px;
+    background: #FFFFFF;
+    box-shadow: 
+        315px 0 0 -13px #FFFFFF,
+        480px 34px 0 -19px #FFFFFF,
+        92px 110px 0 -34px #FFFFFF,
+        375px 110px 0 -29px #FFFFFF;
+}
+
+.cloud7 {
+    width: 680px;
+    height: 215px;
+    top: 72%;
+    right: 10%;
+    opacity: 0.92;
+}
+
+.cloud7::before {
+    width: 188px;
+    height: 188px;
+    top: 24px;
+    left: 0;
+    background: #FFFFFF;
+    box-shadow: 
+        256px 0 0 -21px #FFFFFF,
+        512px 0 0 -26px #FFFFFF,
+        128px 91px 0 -35px #FFFFFF,
+        384px 86px 0 -30px #FFFFFF,
+        580px 96px 0 -24px #FFFFFF;
+}
+
+.cloud7::after {
+    width: 212px;
+    height: 212px;
+    top: -14px;
+    left: 155px;
+    background: #FFFFFF;
+    box-shadow: 
+        300px 0 0 -12px #FFFFFF,
+        455px 36px 0 -18px #FFFFFF,
+        88px 113px 0 -33px #FFFFFF,
+        360px 113px 0 -29px #FFFFFF;
+}
+
+.cloud8 {
+    width: 690px;
+    height: 218px;
+    top: 64%;
+    left: 30%;
+    opacity: 0.95;
+}
+
+.cloud8::before {
+    width: 186px;
+    height: 186px;
+    top: 21px;
+    left: 0;
+    background: #FFFFFF;
+    box-shadow: 
+        252px 0 0 -20px #FFFFFF,
+        504px 0 0 -28px #FFFFFF,
+        126px 90px 0 -36px #FFFFFF,
+        378px 85px 0 -31px #FFFFFF,
+        575px 95px 0 -24px #FFFFFF;
+}
+
+.cloud8::after {
+    width: 206px;
+    height: 206px;
+    top: -17px;
+    left: 160px;
+    background: #FFFFFF;
+    box-shadow: 
+        308px 0 0 -11px #FFFFFF,
+        465px 33px 0 -17px #FFFFFF,
+        93px 111px 0 -32px #FFFFFF,
+        372px 111px 0 -28px #FFFFFF;
+}
+
+.cloud9 {
+    width: 710px;
+    height: 222px;
+    top: 66%;
+    right: 20%;
+    opacity: 0.94;
+}
+
+.cloud9::before {
+    width: 194px;
+    height: 194px;
+    top: 19px;
+    left: 0;
+    background: #FFFFFF;
+    box-shadow: 
+        268px 0 0 -19px #FFFFFF,
+        536px 0 0 -27px #FFFFFF,
+        134px 88px 0 -37px #FFFFFF,
+        402px 83px 0 -32px #FFFFFF,
+        595px 93px 0 -23px #FFFFFF;
+}
+
+.cloud9::after {
+    width: 209px;
+    height: 209px;
+    top: -15px;
+    left: 168px;
+    background: #FFFFFF;
+    box-shadow: 
+        318px 0 0 -13px #FFFFFF,
+        483px 35px 0 -19px #FFFFFF,
+        91px 109px 0 -34px #FFFFFF,
+        378px 109px 0 -29px #FFFFFF;
+}
+
+.cloud10 {
+    width: 660px;
+    height: 212px;
+    top: 74%;
+    left: 35%;
+    opacity: 0.92;
+}
+
+.cloud10::before {
+    width: 187px;
+    height: 187px;
+    top: 23px;
+    left: 0;
+    background: #FFFFFF;
+    box-shadow: 
+        254px 0 0 -21px #FFFFFF,
+        508px 0 0 -25px #FFFFFF,
+        127px 91px 0 -35px #FFFFFF,
+        381px 86px 0 -30px #FFFFFF,
+        577px 96px 0 -24px #FFFFFF;
+}
+
+.cloud10::after {
+    width: 207px;
+    height: 207px;
+    top: -13px;
+    left: 158px;
+    background: #FFFFFF;
+    box-shadow: 
+        309px 0 0 -12px #FFFFFF,
+        467px 37px 0 -18px #FFFFFF,
+        94px 112px 0 -33px #FFFFFF,
+        374px 112px 0 -29px #FFFFFF;
+}
+
+/* Subtle Wind Animation - Gentle cloud movement like the image */
+@keyframes cloudWind1 {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(8px, -4px);
+    }
+}
+
+@keyframes cloudWind2 {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(-10px, 5px);
+    }
+}
+
+@keyframes cloudWind3 {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(6px, -3px);
+    }
+}
+
+@keyframes cloudWind4 {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(-9px, 4px);
+    }
+}
+
+@keyframes cloudWind5 {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(7px, -5px);
+    }
+}
+
+@keyframes cloudWind6 {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(-8px, 6px);
+    }
+}
+
+@keyframes cloudWind7 {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(9px, -4px);
+    }
+}
+
+@keyframes cloudWind8 {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(-7px, 5px);
+    }
+}
+
+@keyframes cloudWind9 {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(10px, -3px);
+    }
+}
+
+@keyframes cloudWind10 {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(-6px, 4px);
+    }
+}
+
+/* Apply gentle wind animations - clouds stay in lower half */
+.cloud1 {
+    animation: cloudWind1 60s ease-in-out infinite;
+}
+
+.cloud2 {
+    animation: cloudWind2 65s ease-in-out infinite;
+}
+
+.cloud3 {
+    animation: cloudWind3 58s ease-in-out infinite;
+}
+
+.cloud4 {
+    animation: cloudWind4 70s ease-in-out infinite;
+}
+
+.cloud5 {
+    animation: cloudWind5 62s ease-in-out infinite;
+}
+
+.cloud6 {
+    animation: cloudWind6 68s ease-in-out infinite;
+}
+
+.cloud7 {
+    animation: cloudWind7 64s ease-in-out infinite;
+}
+
+.cloud8 {
+    animation: cloudWind8 72s ease-in-out infinite;
+}
+
+.cloud9 {
+    animation: cloudWind9 66s ease-in-out infinite;
+}
+
+.cloud10 {
+    animation: cloudWind10 60s ease-in-out infinite;
+}
+
+/* Sunny Golden Rays - Warm Sunlight Effect */
+.heavenly-rays {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200%;
+    height: 100vh;
+    background: radial-gradient(
+        ellipse at center top,
+        rgba(255, 200, 0, 0.15) 0%,
+        rgba(255, 180, 0, 0.12) 15%,
+        rgba(255, 215, 0, 0.08) 30%,
+        rgba(255, 200, 0, 0.05) 45%,
+        transparent 70%
+    );
+    pointer-events: none;
+    z-index: 1;
+    animation: sunnyRayPulse 5s ease-in-out infinite;
+}
+
+@keyframes sunnyRayPulse {
+    0%, 100% {
+        opacity: 0.8;
+        transform: translateX(-50%) scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.15);
+    }
+}
+
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 40px 20px;
     position: relative;
-    z-index: 1;
+    z-index: 10;
 }
 
-/* Hero Section */
+/* Banner Section with REMEMBER KITKAT */
+.banner-section {
+    text-align: center;
+    padding: 40px 20px;
+    margin-bottom: 40px;
+    animation: fadeInDown 1s ease-out;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.remember-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    text-shadow: 
+        3px 3px 0px rgba(255, 215, 0, 0.8),
+        6px 6px 0px rgba(0, 0, 0, 0.2),
+        0 0 30px rgba(255, 215, 0, 0.5);
+    color: var(--text-light);
+    animation: titleGlow 3s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+    0%, 100% {
+        text-shadow: 
+            3px 3px 0px rgba(255, 215, 0, 0.8),
+            6px 6px 0px rgba(0, 0, 0, 0.2),
+            0 0 30px rgba(255, 215, 0, 0.5);
+    }
+    50% {
+        text-shadow: 
+            3px 3px 0px rgba(255, 215, 0, 1),
+            6px 6px 0px rgba(0, 0, 0, 0.2),
+            0 0 50px rgba(255, 215, 0, 0.8);
+    }
+}
+
+.title-left,
+.title-right {
+    display: inline-block;
+    animation: bounceLetter 2s ease-in-out infinite;
+}
+
+.title-left {
+    animation-delay: 0s;
+}
+
+.title-right {
+    animation-delay: 0.2s;
+}
+
+@keyframes bounceLetter {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Hero Section with Angelic Cat */
 .hero {
     text-align: center;
     padding: 60px 20px;
@@ -89,191 +681,235 @@ body::before {
     position: relative;
 }
 
-.kitkat-image-wrapper {
+/* Angelic Cat with Wings */
+.angelic-cat-wrapper {
     position: relative;
     display: inline-block;
-    margin-bottom: 30px;
-    animation: float 3s ease-in-out infinite;
+    margin-bottom: 40px;
+    animation: flyAcross 20s infinite ease-in-out;
 }
 
-@keyframes float {
+@keyframes flyAcross {
     0%, 100% {
-        transform: translateY(0px);
+        transform: translateX(-100px) translateY(0);
+    }
+    25% {
+        transform: translateX(100px) translateY(-50px);
     }
     50% {
-        transform: translateY(-20px);
+        transform: translateX(0) translateY(-100px);
+    }
+    75% {
+        transform: translateX(-50px) translateY(-30px);
     }
 }
 
-.kitkat-image {
-    width: 300px;
-    height: 300px;
+.angelic-cat {
+    width: 280px;
+    height: 280px;
     object-fit: cover;
     border-radius: 50%;
-    border: 8px solid var(--text-light);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15),
-                0 0 40px rgba(0, 0, 0, 0.2),
-                0 0 80px rgba(255, 107, 157, 0.2);
-    animation: pulse 2s ease-in-out infinite;
+    border: 8px solid var(--cloud-white);
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.2),
+        0 0 40px rgba(255, 215, 0, 0.4),
+        inset 0 0 30px rgba(255, 255, 255, 0.5);
     position: relative;
-    z-index: 2;
-    background: var(--text-light);
+    z-index: 3;
+    background: var(--cloud-white);
 }
 
-@keyframes pulse {
+/* Golden Halo */
+.halo {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 340px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, 
+        rgba(255, 215, 0, 0.9) 0%,
+        rgba(255, 215, 0, 0.7) 50%,
+        transparent 100%);
+    box-shadow: 
+        0 0 30px rgba(255, 215, 0, 0.8),
+        0 0 60px rgba(255, 215, 0, 0.5);
+    z-index: 2;
+    animation: haloGlow 2s ease-in-out infinite;
+}
+
+@keyframes haloGlow {
     0%, 100% {
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15),
-                    0 0 40px rgba(0, 0, 0, 0.2),
-                    0 0 80px rgba(255, 107, 157, 0.2);
+        opacity: 0.9;
+        transform: translateX(-50%) scale(1);
     }
     50% {
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15),
-                    0 0 60px rgba(0, 0, 0, 0.3),
-                    0 0 100px rgba(255, 107, 157, 0.4);
+        opacity: 1;
+        transform: translateX(-50%) scale(1.1);
     }
 }
 
-.floating-hearts {
+/* Angel Wings */
+.angelic-wings {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 300px;
+    z-index: 1;
     pointer-events: none;
 }
 
-.floating-hearts .heart {
+.wing {
     position: absolute;
-    font-size: 24px;
-    animation: heartFloat 3s ease-in-out infinite;
-    opacity: 0.8;
+    width: 180px;
+    height: 180px;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(240, 240, 240, 0.9) 100%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.2),
+        inset -20px 0 30px rgba(200, 200, 200, 0.3);
+    animation: wingFlap 1.5s ease-in-out infinite;
 }
 
-.floating-hearts .heart:nth-child(1) {
-    top: -20px;
-    left: 20%;
+.wing-left {
+    left: 20px;
+    transform: rotate(-15deg);
     animation-delay: 0s;
 }
 
-.floating-hearts .heart:nth-child(2) {
-    top: 10%;
-    right: 10%;
-    animation-delay: 0.5s;
+.wing-right {
+    right: 20px;
+    transform: rotate(15deg) scaleX(-1);
+    animation-delay: 0.75s;
 }
 
-.floating-hearts .heart:nth-child(3) {
-    bottom: 20%;
-    left: 10%;
-    animation-delay: 1s;
-}
-
-.floating-hearts .heart:nth-child(4) {
-    bottom: -10px;
-    right: 25%;
-    animation-delay: 1.5s;
-}
-
-@keyframes heartFloat {
+@keyframes wingFlap {
     0%, 100% {
-        transform: translateY(0) scale(1);
-        opacity: 0.8;
+        transform: rotate(-15deg) scaleY(1);
     }
     50% {
-        transform: translateY(-30px) scale(1.2);
-        opacity: 1;
+        transform: rotate(-25deg) scaleY(1.1);
     }
 }
 
-.hero-title {
-    font-family: 'Fredoka One', cursive;
-    font-size: 4rem;
-    color: var(--primary-purple);
-    text-shadow: 4px 4px 0px var(--primary-pink),
-                 8px 8px 0px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    animation: titleBounce 1.5s ease-out 0.5s both;
-    letter-spacing: 2px;
+.wing-right {
+    animation-name: wingFlapRight;
 }
 
-@keyframes titleBounce {
-    0% {
-        opacity: 0;
-        transform: scale(0.5) translateY(-50px);
+@keyframes wingFlapRight {
+    0%, 100% {
+        transform: rotate(15deg) scaleX(-1) scaleY(1);
     }
-    60% {
-        transform: scale(1.1) translateY(0);
+    50% {
+        transform: rotate(25deg) scaleX(-1) scaleY(1.1);
     }
-    100% {
+}
+
+/* Golden Glow around Cat */
+.golden-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(255, 215, 0, 0.4) 0%,
+        rgba(255, 215, 0, 0.2) 40%,
+        transparent 70%
+    );
+    z-index: 0;
+    animation: glowPulse 3s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
         opacity: 1;
-        transform: scale(1);
+        transform: translate(-50%, -50%) scale(1.2);
     }
 }
 
 .hero-subtitle {
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: var(--text-dark);
     text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
-    margin-bottom: 15px;
-    animation: fadeInUp 1s ease-out 0.8s both;
+    margin-bottom: 20px;
+    animation: fadeInUp 1s ease-out 0.5s both;
 }
 
 .hero-description {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     color: var(--text-dark);
     text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
-    animation: fadeInUp 1s ease-out 1s both;
+    animation: fadeInUp 1s ease-out 0.7s both;
     line-height: 1.8;
+}
+
+/* Cloud-Themed Boxes */
+.cloud-box {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 30px;
+    box-shadow: 
+        0 15px 50px rgba(0, 0, 0, 0.1),
+        inset 0 0 30px rgba(255, 255, 255, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.cloud-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.3) 0%,
+        transparent 70%
+    );
+    animation: cloudShimmer 4s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes cloudShimmer {
+    0%, 100% {
+        opacity: 0.3;
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    50% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) rotate(180deg);
+    }
 }
 
 /* Contract Address Section */
 .contract-section {
-    margin: 60px 0;
+    margin: 80px 0;
     animation: fadeInUp 1s ease-out 1.2s both;
-}
-
-/* Chart Section */
-.chart-section {
-    margin: 60px 0;
-    animation: fadeInUp 1s ease-out 1.3s both;
-}
-
-.chart-wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 25px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1),
-                0 0 20px rgba(0, 0, 0, 0.08);
-    overflow: hidden;
-    position: relative;
-}
-
-.chart-wrapper::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: var(--bg-gradient);
-    z-index: 1;
-}
-
-.chart-wrapper iframe {
-    border-radius: 20px;
-    background: transparent;
 }
 
 .section-title {
     font-family: 'Fredoka One', cursive;
-    font-size: 2.5rem;
-    color: var(--primary-purple);
+    font-size: 2.8rem;
+    color: var(--text-dark);
     text-align: center;
-    margin-bottom: 30px;
-    text-shadow: 3px 3px 0px var(--primary-pink),
-                 6px 6px 0px rgba(0, 0, 0, 0.1);
-    letter-spacing: 1px;
+    margin-bottom: 40px;
+    text-shadow: 
+        3px 3px 0px rgba(255, 255, 255, 0.8),
+        0 0 20px rgba(255, 215, 0, 0.3);
+    letter-spacing: 2px;
 }
 
 .address-box {
@@ -281,83 +917,45 @@ body::before {
     gap: 15px;
     max-width: 700px;
     margin: 0 auto;
-    background: rgba(255, 255, 255, 0.95);
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2),
-                0 0 20px rgba(0, 0, 0, 0.2);
-    animation: slideIn 0.5s ease-out;
-}
-
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateX(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+    padding: 25px;
 }
 
 #contractAddress {
     flex: 1;
-    padding: 15px 20px;
+    padding: 18px 25px;
     font-size: 1.1rem;
     font-family: 'Bubblegum Sans', cursive;
-    border: 3px solid var(--primary-purple);
-    border-radius: 15px;
-    background: var(--text-light);
+    border: 3px solid rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    background: var(--cloud-white);
     color: var(--text-dark);
     outline: none;
     transition: all 0.3s ease;
 }
 
 #contractAddress:focus {
-    border-color: var(--primary-pink);
-    box-shadow: 0 0 15px rgba(255, 107, 157, 0.5);
+    border-color: var(--gold);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
 }
 
 .copy-btn {
-    padding: 15px 30px;
+    padding: 18px 35px;
     font-size: 1.1rem;
     font-family: 'Fredoka One', cursive;
-    background: var(--bg-gradient);
-    color: var(--text-light);
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: var(--text-dark);
     border: none;
-    border-radius: 15px;
+    border-radius: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     position: relative;
     overflow: hidden;
 }
 
-.copy-btn::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-}
-
-.copy-btn:hover::before {
-    width: 300px;
-    height: 300px;
-}
-
 .copy-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-}
-
-.copy-btn:active {
-    transform: translateY(0);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
 }
 
 .copy-btn.copied {
@@ -383,9 +981,26 @@ body::before {
     100% { transform: scale(1); }
 }
 
+/* Chart Section */
+.chart-section {
+    margin: 80px 0;
+    animation: fadeInUp 1s ease-out 1.3s both;
+}
+
+.chart-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 25px;
+}
+
+.chart-wrapper iframe {
+    border-radius: 20px;
+    background: transparent;
+}
+
 /* Social Section */
 .social-section {
-    margin: 60px 0;
+    margin: 80px 0;
     animation: fadeInUp 1s ease-out 1.4s both;
 }
 
@@ -400,56 +1015,20 @@ body::before {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
-    padding: 25px 35px;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 20px;
+    gap: 15px;
+    padding: 30px 40px;
+    min-width: 150px;
     text-decoration: none;
     color: var(--text-dark);
     transition: all 0.3s ease;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    position: relative;
-    overflow: hidden;
-    min-width: 140px;
-}
-
-.social-link::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    transition: left 0.3s ease;
-    z-index: 0;
-}
-
-/* Black/white gradient for Telegram and X */
-.social-link.telegram::before,
-.social-link.twitter::before {
-    background: linear-gradient(135deg, #000000 0%, #333333 100%);
-}
-
-.social-link.telegram:hover::before,
-.social-link.twitter:hover::before {
-    left: 0;
-}
-
-/* Keep colorful gradient for image-based social links */
-.social-link:not(.telegram):not(.twitter)::before {
-    background: var(--bg-gradient);
-}
-
-.social-link:not(.telegram):not(.twitter):hover::before {
-    left: 0;
 }
 
 .social-link svg,
 .social-link .social-img {
-    width: 48px;
-    height: 48px;
+    width: 52px;
+    height: 52px;
     position: relative;
-    z-index: 1;
+    z-index: 2;
     transition: transform 0.3s ease;
 }
 
@@ -458,29 +1037,12 @@ body::before {
 }
 
 .social-link:hover svg {
-    fill: #ffffff;
-    transform: scale(1.2) rotate(5deg);
-}
-
-/* Special styling for Telegram and X - black/white */
-.social-link.telegram svg,
-.social-link.twitter svg {
     fill: #000000;
-    background: #ffffff;
-    border-radius: 50%;
-    padding: 8px;
-}
-
-.social-link.telegram:hover svg,
-.social-link.twitter:hover svg {
-    fill: #ffffff;
-    background: #000000;
+    transform: scale(1.2) rotate(5deg);
 }
 
 .social-link .social-img {
     object-fit: contain;
-    /* Keep original colors for dexscreener and dextools */
-    transition: transform 0.3s ease;
 }
 
 .social-link:hover .social-img {
@@ -489,68 +1051,81 @@ body::before {
 
 .social-link span {
     font-family: 'Fredoka One', cursive;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     position: relative;
-    z-index: 1;
-    transition: color 0.3s ease;
-}
-
-.social-link:hover span {
-    color: var(--text-light);
-}
-
-/* Keep black text for telegram/twitter when not hovering */
-.social-link.telegram span,
-.social-link.twitter span {
-    color: var(--text-dark);
-}
-
-.social-link.telegram:hover span,
-.social-link.twitter:hover span {
-    color: var(--text-light);
+    z-index: 2;
 }
 
 .social-link:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    transform: translateY(-8px) scale(1.05);
+}
+
+/* Special styling for Telegram and X - black/white */
+.social-link.telegram svg,
+.social-link.twitter svg {
+    fill: #000000;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.social-link.telegram:hover svg,
+.social-link.twitter:hover svg {
+    fill: #000000;
+    background: rgba(0, 0, 0, 0.1);
 }
 
 /* Footer */
 .footer {
     text-align: center;
-    padding: 40px 20px;
-    margin-top: 60px;
+    padding: 50px 20px;
+    margin-top: 80px;
     animation: fadeInUp 1s ease-out 1.6s both;
 }
 
 .footer p {
-    font-size: 1.5rem;
-    color: var(--primary-purple);
+    font-size: 1.6rem;
+    color: var(--text-dark);
     text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
     font-family: 'Fredoka One', cursive;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .hero-title {
-        font-size: 2.5rem;
+    .remember-title {
+        font-size: 3rem;
+        gap: 15px;
     }
 
     .hero-subtitle {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
     }
 
     .hero-description {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
 
     .section-title {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
 
-    .kitkat-image {
-        width: 250px;
-        height: 250px;
+    .angelic-cat {
+        width: 220px;
+        height: 220px;
+    }
+
+    .halo {
+        width: 280px;
+    }
+
+    .angelic-wings {
+        width: 320px;
+        height: 240px;
+    }
+
+    .wing {
+        width: 140px;
+        height: 140px;
     }
 
     .address-box {
@@ -559,10 +1134,6 @@ body::before {
 
     .copy-btn {
         width: 100%;
-    }
-
-    .chart-wrapper {
-        padding: 15px;
     }
 
     .chart-wrapper iframe {
@@ -574,38 +1145,48 @@ body::before {
     }
 
     .social-link {
-        min-width: 120px;
-        padding: 20px 25px;
+        min-width: 130px;
+        padding: 25px 30px;
     }
 }
 
 @media (max-width: 480px) {
-    .hero-title {
-        font-size: 2rem;
+    .remember-title {
+        font-size: 2.2rem;
+        flex-direction: column;
     }
 
-    .kitkat-image {
-        width: 200px;
+    .angelic-cat {
+        width: 180px;
+        height: 180px;
+    }
+
+    .halo {
+        width: 220px;
+    }
+
+    .angelic-wings {
+        width: 260px;
         height: 200px;
     }
 
+    .wing {
+        width: 110px;
+        height: 110px;
+    }
+
     .social-link {
-        min-width: 100px;
-        padding: 15px 20px;
+        min-width: 110px;
+        padding: 20px 25px;
     }
 
     .social-link svg,
     .social-link .social-img {
-        width: 40px;
-        height: 40px;
-    }
-
-    .chart-wrapper {
-        padding: 10px;
+        width: 45px;
+        height: 45px;
     }
 
     .chart-wrapper iframe {
         height: 400px;
     }
 }
-

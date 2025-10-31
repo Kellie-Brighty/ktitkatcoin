@@ -10,20 +10,44 @@
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Bubblegum+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Animated Cloud Background -->
+    <div class="cloud-container">
+        <div class="cloud cloud1"></div>
+        <div class="cloud cloud2"></div>
+        <div class="cloud cloud3"></div>
+        <div class="cloud cloud4"></div>
+        <div class="cloud cloud5"></div>
+        <div class="cloud cloud6"></div>
+        <div class="cloud cloud7"></div>
+        <div class="cloud cloud8"></div>
+        <div class="cloud cloud9"></div>
+        <div class="cloud cloud10"></div>
+    </div>
+
+    <!-- Sunny Golden Rays -->
+    <div class="heavenly-rays"></div>
+
     <div class="container">
-        <!-- Hero Section -->
+        <!-- Banner Section -->
+        <section class="banner-section">
+            <h1 class="remember-title">
+                <span class="title-left">REMEMBER</span>
+                <span class="title-right">KITKAT</span>
+            </h1>
+        </section>
+
+        <!-- Hero Section with Flying Angelic Cat -->
         <section class="hero">
             <div class="hero-content">
-                <div class="kitkat-image-wrapper">
-                    <img src="kitkat-image.png" alt="KitKat" class="kitkat-image">
-                    <div class="floating-hearts">
-                        <span class="heart">❤️</span>
-                        <span class="heart">💜</span>
-                        <span class="heart">❤️</span>
-                        <span class="heart">💜</span>
+                <div class="angelic-cat-wrapper">
+                    <div class="halo"></div>
+                    <div class="angelic-wings">
+                        <div class="wing wing-left"></div>
+                        <div class="wing wing-right"></div>
                     </div>
+                    <img src="kitkat-image.png" alt="KitKat" class="kitkat-image angelic-cat">
+                    <div class="golden-glow"></div>
                 </div>
-                <h1 class="hero-title">Remember KitKat ❤️</h1>
                 <p class="hero-subtitle">The Beloved Corner Store Cat of San Francisco</p>
                 <p class="hero-description">Forever in our hearts at Randa's Market<br>16th & Valencia, San Francisco</p>
             </div>
@@ -32,7 +56,7 @@
         <!-- Contract Address Section -->
         <section class="contract-section">
             <h2 class="section-title">Contract Address</h2>
-            <div class="address-box">
+            <div class="address-box cloud-box">
                 <input type="text" id="contractAddress" value="0x25f05327029936f078b90fed23e7be1b42e36556" readonly>
                 <button id="copyBtn" class="copy-btn">
                     <span class="copy-text">Copy</span>
@@ -44,12 +68,12 @@
         <!-- DexScreener Chart Section -->
         <section class="chart-section">
             <h2 class="section-title">Live Chart</h2>
-            <div class="chart-wrapper">
+            <div class="chart-wrapper cloud-box">
                 <iframe 
                     src="https://dexscreener.com/ethereum/0x25f05327029936f078b90fed23e7be1b42e36556?embed=1&theme=light&trades=0&info=0"
                     height="600"
                     width="100%"
-                    style="border: none; border-radius: 20px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);"
+                    style="border: none; border-radius: 20px;"
                     allowtransparency="true"
                     loading="lazy">
                 </iframe>
@@ -60,23 +84,23 @@
         <section class="social-section">
             <h2 class="section-title">Join the Community</h2>
             <div class="social-links">
-                <a href="https://t.me/kitkatcoinoneth" class="social-link telegram" target="_blank" rel="noopener noreferrer">
+                <a href="https://t.me/kitkatcoinoneth" class="social-link telegram cloud-box" target="_blank" rel="noopener noreferrer">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
                     </svg>
                     <span>Telegram</span>
                 </a>
-                <a href="https://x.com/kitkatonerc" class="social-link twitter" target="_blank" rel="noopener noreferrer">
+                <a href="https://x.com/kitkatonerc" class="social-link twitter cloud-box" target="_blank" rel="noopener noreferrer">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                     </svg>
                     <span>X (Twitter)</span>
                 </a>
-                <a href="https://www.dextools.io/app/en/ether/token/0x25f05327029936f078b90fed23e7be1b42e36556" class="social-link" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.dextools.io/app/en/ether/token/0x25f05327029936f078b90fed23e7be1b42e36556" class="social-link cloud-box" target="_blank" rel="noopener noreferrer">
                     <img src="dextools.png" alt="DexTools" class="social-img">
                     <span>DexTools</span>
                 </a>
-                <a href="https://dexscreener.com/ethereum/0x25f05327029936f078b90fed23e7be1b42e36556" class="social-link" target="_blank" rel="noopener noreferrer">
+                <a href="https://dexscreener.com/ethereum/0x25f05327029936f078b90fed23e7be1b42e36556" class="social-link cloud-box" target="_blank" rel="noopener noreferrer">
                     <img src="dexscreener.webp" alt="DexScreener" class="social-img">
                     <span>DexScreener</span>
                 </a>
@@ -92,4 +116,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
