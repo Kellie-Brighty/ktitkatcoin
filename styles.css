@@ -1,0 +1,611 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-pink: #FF6B9D;
+    --primary-purple: #000000;
+    --primary-yellow: #FFD93D;
+    --primary-orange: #FF8E53;
+    --bright-blue: #4FC3F7;
+    --bright-green: #66BB6A;
+    --bg-gradient: linear-gradient(135deg, #FF6B9D 0%, #000000 50%, #FFD93D 100%);
+    --text-dark: #2D2D2D;
+    --text-light: #FFFFFF;
+}
+
+body {
+    font-family: 'Bubblegum Sans', cursive;
+    background: #ffffff;
+    background-image: 
+        radial-gradient(circle at 25px 25px, rgba(255, 107, 157, 0.08) 2px, transparent 0),
+        radial-gradient(circle at 75px 75px, rgba(0, 0, 0, 0.08) 2px, transparent 0),
+        radial-gradient(circle at 125px 125px, rgba(255, 217, 61, 0.08) 2px, transparent 0),
+        linear-gradient(45deg, transparent 30%, rgba(255, 107, 157, 0.03) 30%, rgba(255, 107, 157, 0.03) 70%, transparent 70%),
+        linear-gradient(-45deg, transparent 30%, rgba(0, 0, 0, 0.03) 30%, rgba(0, 0, 0, 0.03) 70%, transparent 70%);
+    background-size: 200px 200px, 200px 200px, 200px 200px, 60px 60px, 60px 60px;
+    background-position: 0 0, 100px 100px, 50px 50px, 0 0, 30px 30px;
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: var(--text-dark);
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 0, 0, 0.03) 2px,
+            rgba(0, 0, 0, 0.03) 4px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 2px,
+            rgba(255, 107, 157, 0.03) 2px,
+            rgba(255, 107, 157, 0.03) 4px
+        );
+    pointer-events: none;
+    z-index: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-content {
+    position: relative;
+}
+
+.kitkat-image-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 30px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.kitkat-image {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 8px solid var(--text-light);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15),
+                0 0 40px rgba(0, 0, 0, 0.2),
+                0 0 80px rgba(255, 107, 157, 0.2);
+    animation: pulse 2s ease-in-out infinite;
+    position: relative;
+    z-index: 2;
+    background: var(--text-light);
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15),
+                    0 0 40px rgba(0, 0, 0, 0.2),
+                    0 0 80px rgba(255, 107, 157, 0.2);
+    }
+    50% {
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15),
+                    0 0 60px rgba(0, 0, 0, 0.3),
+                    0 0 100px rgba(255, 107, 157, 0.4);
+    }
+}
+
+.floating-hearts {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.floating-hearts .heart {
+    position: absolute;
+    font-size: 24px;
+    animation: heartFloat 3s ease-in-out infinite;
+    opacity: 0.8;
+}
+
+.floating-hearts .heart:nth-child(1) {
+    top: -20px;
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.floating-hearts .heart:nth-child(2) {
+    top: 10%;
+    right: 10%;
+    animation-delay: 0.5s;
+}
+
+.floating-hearts .heart:nth-child(3) {
+    bottom: 20%;
+    left: 10%;
+    animation-delay: 1s;
+}
+
+.floating-hearts .heart:nth-child(4) {
+    bottom: -10px;
+    right: 25%;
+    animation-delay: 1.5s;
+}
+
+@keyframes heartFloat {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateY(-30px) scale(1.2);
+        opacity: 1;
+    }
+}
+
+.hero-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 4rem;
+    color: var(--primary-purple);
+    text-shadow: 4px 4px 0px var(--primary-pink),
+                 8px 8px 0px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    animation: titleBounce 1.5s ease-out 0.5s both;
+    letter-spacing: 2px;
+}
+
+@keyframes titleBounce {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) translateY(-50px);
+    }
+    60% {
+        transform: scale(1.1) translateY(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.hero-subtitle {
+    font-size: 1.8rem;
+    color: var(--text-dark);
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+    margin-bottom: 15px;
+    animation: fadeInUp 1s ease-out 0.8s both;
+}
+
+.hero-description {
+    font-size: 1.3rem;
+    color: var(--text-dark);
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+    animation: fadeInUp 1s ease-out 1s both;
+    line-height: 1.8;
+}
+
+/* Contract Address Section */
+.contract-section {
+    margin: 60px 0;
+    animation: fadeInUp 1s ease-out 1.2s both;
+}
+
+/* Chart Section */
+.chart-section {
+    margin: 60px 0;
+    animation: fadeInUp 1s ease-out 1.3s both;
+}
+
+.chart-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 25px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1),
+                0 0 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    position: relative;
+}
+
+.chart-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--bg-gradient);
+    z-index: 1;
+}
+
+.chart-wrapper iframe {
+    border-radius: 20px;
+    background: transparent;
+}
+
+.section-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2.5rem;
+    color: var(--primary-purple);
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 3px 3px 0px var(--primary-pink),
+                 6px 6px 0px rgba(0, 0, 0, 0.1);
+    letter-spacing: 1px;
+}
+
+.address-box {
+    display: flex;
+    gap: 15px;
+    max-width: 700px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2),
+                0 0 20px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+#contractAddress {
+    flex: 1;
+    padding: 15px 20px;
+    font-size: 1.1rem;
+    font-family: 'Bubblegum Sans', cursive;
+    border: 3px solid var(--primary-purple);
+    border-radius: 15px;
+    background: var(--text-light);
+    color: var(--text-dark);
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#contractAddress:focus {
+    border-color: var(--primary-pink);
+    box-shadow: 0 0 15px rgba(255, 107, 157, 0.5);
+}
+
+.copy-btn {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-family: 'Fredoka One', cursive;
+    background: var(--bg-gradient);
+    color: var(--text-light);
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.copy-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.copy-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.copy-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.copy-btn:active {
+    transform: translateY(0);
+}
+
+.copy-btn.copied {
+    background: linear-gradient(135deg, #66BB6A 0%, #4FC3F7 100%);
+}
+
+.copied-text {
+    display: none;
+}
+
+.copy-btn.copied .copy-text {
+    display: none;
+}
+
+.copy-btn.copied .copied-text {
+    display: inline-block;
+    animation: pop 0.3s ease;
+}
+
+@keyframes pop {
+    0% { transform: scale(0.8); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Social Section */
+.social-section {
+    margin: 60px 0;
+    animation: fadeInUp 1s ease-out 1.4s both;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 25px 35px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    text-decoration: none;
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+    min-width: 140px;
+}
+
+.social-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    transition: left 0.3s ease;
+    z-index: 0;
+}
+
+/* Black/white gradient for Telegram and X */
+.social-link.telegram::before,
+.social-link.twitter::before {
+    background: linear-gradient(135deg, #000000 0%, #333333 100%);
+}
+
+.social-link.telegram:hover::before,
+.social-link.twitter:hover::before {
+    left: 0;
+}
+
+/* Keep colorful gradient for image-based social links */
+.social-link:not(.telegram):not(.twitter)::before {
+    background: var(--bg-gradient);
+}
+
+.social-link:not(.telegram):not(.twitter):hover::before {
+    left: 0;
+}
+
+.social-link svg,
+.social-link .social-img {
+    width: 48px;
+    height: 48px;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+.social-link svg {
+    fill: #000000;
+}
+
+.social-link:hover svg {
+    fill: #ffffff;
+    transform: scale(1.2) rotate(5deg);
+}
+
+/* Special styling for Telegram and X - black/white */
+.social-link.telegram svg,
+.social-link.twitter svg {
+    fill: #000000;
+    background: #ffffff;
+    border-radius: 50%;
+    padding: 8px;
+}
+
+.social-link.telegram:hover svg,
+.social-link.twitter:hover svg {
+    fill: #ffffff;
+    background: #000000;
+}
+
+.social-link .social-img {
+    object-fit: contain;
+    /* Keep original colors for dexscreener and dextools */
+    transition: transform 0.3s ease;
+}
+
+.social-link:hover .social-img {
+    transform: scale(1.2) rotate(-5deg);
+}
+
+.social-link span {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.1rem;
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease;
+}
+
+.social-link:hover span {
+    color: var(--text-light);
+}
+
+/* Keep black text for telegram/twitter when not hovering */
+.social-link.telegram span,
+.social-link.twitter span {
+    color: var(--text-dark);
+}
+
+.social-link.telegram:hover span,
+.social-link.twitter:hover span {
+    color: var(--text-light);
+}
+
+.social-link:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 60px;
+    animation: fadeInUp 1s ease-out 1.6s both;
+}
+
+.footer p {
+    font-size: 1.5rem;
+    color: var(--primary-purple);
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+    font-family: 'Fredoka One', cursive;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.4rem;
+    }
+
+    .hero-description {
+        font-size: 1.1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .kitkat-image {
+        width: 250px;
+        height: 250px;
+    }
+
+    .address-box {
+        flex-direction: column;
+    }
+
+    .copy-btn {
+        width: 100%;
+    }
+
+    .chart-wrapper {
+        padding: 15px;
+    }
+
+    .chart-wrapper iframe {
+        height: 500px;
+    }
+
+    .social-links {
+        gap: 20px;
+    }
+
+    .social-link {
+        min-width: 120px;
+        padding: 20px 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .kitkat-image {
+        width: 200px;
+        height: 200px;
+    }
+
+    .social-link {
+        min-width: 100px;
+        padding: 15px 20px;
+    }
+
+    .social-link svg,
+    .social-link .social-img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .chart-wrapper {
+        padding: 10px;
+    }
+
+    .chart-wrapper iframe {
+        height: 400px;
+    }
+}
+
